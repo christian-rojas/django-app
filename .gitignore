@@ -1,0 +1,10 @@
+db.sqlite3
+.env 
+.venv
+celerybeat-schedule.*
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
