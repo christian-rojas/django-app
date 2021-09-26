@@ -4,15 +4,26 @@ from django.http import Http404
 from django.http import HttpResponse
 from .models import Person
 from django.template import loader
+from django.views import View
 
-def index(request):
-    # persons = Person.objects.all()
-    template = loader.get_template('users/index.html')
-    context = {
-        'persons': Person.objects.all(),
-    }
-    return HttpResponse(template.render(context, request))
+# def index(request):
+#     # persons = Person.objects.all()
+#     template = loader.get_template('users/index.html')
+#     context = {
+#         'persons': Person.objects.all(),
+#     }
+#     return HttpResponse(template.render(context, request))
     # return HttpResponse(persons)
+
+class Index(View):
+    def get(self, request, *args, **kwargs):
+        # template = loader.get_template('users/index.html')
+        # persons = Person.objects.all()
+#     template = loader.get_template('users/index.html')
+        context = {
+            'persons': Person.objects.all(),
+        }
+        return render(request, 'users/index.html', context)
 
 def detail(request, user_id):
     try:
